@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator of Alyssa Malig Bondoc - IT3A</title>
+    <style>
+        .calculator {
+            width: 250px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            text-align: right;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .output {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px;
+            background-color: #7e0808;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d46464;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="color:black; text-align:center">Calculator of Alyssa Malig Bondoc - IT3A</h2>
+    <div class="calculator">
+        <div class="output" id="output">0</div>
+        <div class="buttons">
+            <button onclick="appendToOutput('7')">7</button>
+            <button onclick="appendToOutput('8')">8</button>
+            <button onclick="appendToOutput('9')">9</button>
+            <button onclick="appendToOutput('+')">+</button>
+            <button onclick="appendToOutput('4')">4</button>
+            <button onclick="appendToOutput('5')">5</button>
+            <button onclick="appendToOutput('6')">6</button>
+            <button onclick="appendToOutput('-')">-</button>
+            <button onclick="appendToOutput('1')">1</button>
+            <button onclick="appendToOutput('2')">2</button>
+            <button onclick="appendToOutput('3')">3</button>
+            <button onclick="appendToOutput('*')">*</button>
+            <button onclick="appendToOutput('0')">0</button>
+            <button onclick="appendToOutput('.')">.</button>
+            <button onclick="calculateResult('=')">=</button>
+            <button onclick="appendToOutput('/')">÷</button>
+            <button onclick="clearOutput()">C</button>
+        </div>
+        <button onclick="displayFullName('BONDOC')">BONDOC</button>
+    </div>
+
+    <script>
+        let output = document.getElementById('output');
+        let currentInput = '';
+        let fullName = "Alyssa Malig Bondoc";
+
+        function appendToOutput(value) {
+            currentInput += value;
+            output.textContent = currentInput;
+        }
+
+        function calculateResult() {
+            try {
+                currentInput = eval(currentInput);
+                output.textContent = currentInput;
+            } catch (error) {
+                output.textContent = 'Error';
+                currentInput = '';
+            }
+        }
+
+        function clearOutput() {
+            currentInput = '';
+            output.textContent = '0';
+        }
+
+        function displayFullName(surname) {
+            output.textContent = fullName;
+        }
+    </script>
+</body>
+</html>
